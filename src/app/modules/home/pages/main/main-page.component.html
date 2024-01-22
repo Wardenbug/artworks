@@ -1,5 +1,18 @@
-<ngx-masonry class="container">
-    <div ngxMasonryItem class="masonry-item" *ngFor="let item of items">
-        <app-art-card [item]="item"/>
-    </div>
-</ngx-masonry>
+<div class="container">
+
+    <mat-form-field class="search-container">
+        <mat-label>Search by keyword, artist, or reference</mat-label>
+        <input matInput type="text" />
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <ngx-masonry>
+        <div ngxMasonryItem class="masonry-item" *ngFor="let item of items">
+            <app-art-card [item]="item" />
+        </div>
+    </ngx-masonry>
+
+    <app-pagination [itemsPerPage]="pagination.limit" [currentPage]="pagination.current_page"
+        [totalPages]="pagination.total_pages" (pageChanged)="changePage($event)" *ngIf="pagination">
+    </app-pagination>
+</div>

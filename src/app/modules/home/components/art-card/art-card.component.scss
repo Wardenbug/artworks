@@ -6,12 +6,15 @@ img{
     min-height: 190px;
 }
 .img-container{
-    // max-height: 500px;
     overflow: hidden;
     background-color: #f6f6f6;
 }
 
 .card{
-    // max-width: 23%;
     margin: 5px;
+    cursor: pointer;
+    transition: .5s;
+    &:hover{
+        opacity: 0.8;
+    }
 }

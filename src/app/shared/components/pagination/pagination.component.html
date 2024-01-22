@@ -1,0 +1,37 @@
+<div class="pagination">
+    <button mat-fab matTooltip="Primary" color="primary" aria-label="Previous" (click)="changePage(currentPage - 1)"
+        [disabled]="currentPage === 1">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+
+
+    <div class="pages-container">
+        <button mat-fab matTooltip="Primary" color="primary" aria-label="Next" (click)="changePage(currentPage - 2)"
+            *ngIf="currentPage - 2 > 0" [disabled]=" currentPage===totalPages">
+            {{currentPage - 2}}
+        </button>
+        <button mat-fab matTooltip="Primary" color="primary" aria-label="Next" (click)="changePage(currentPage - 1)"
+            *ngIf="currentPage - 1 > 0" [disabled]=" currentPage===totalPages">
+            {{currentPage - 1}}
+        </button>
+
+        <button mat-fab matTooltip="Primary" color="primary" aria-label="Next" (click)="changePage(currentPage)"
+            [disabled]="true">
+            {{currentPage}}
+        </button>
+
+        <button mat-fab matTooltip="Primary" color="primary" aria-label="Next" (click)="changePage(currentPage + 1)"
+            [disabled]="">
+            {{currentPage + 1}}
+        </button>
+        <button mat-fab matTooltip="Primary" color="primary" aria-label="Next" (click)="changePage(currentPage + 2)"
+            [disabled]=" currentPage===totalPages">
+            {{currentPage + 2}}
+        </button>
+    </div>
+
+    <button mat-fab matTooltip="Primary" color="primary" aria-label="Next" (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage === totalPages">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+</div>
