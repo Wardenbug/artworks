@@ -8,6 +8,8 @@ import { NgxMasonryModule } from 'ngx-masonry';
 import { MatIconModule } from '@angular/material/icon';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [PaginationComponent],
@@ -20,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
+    FormsModule
   ],
   exports: [
     MatCardModule,

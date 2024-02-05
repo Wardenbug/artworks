@@ -1,10 +1,13 @@
 <div class="container">
 
-    <mat-form-field class="search-container">
-        <mat-label>Search by keyword, artist, or reference</mat-label>
-        <input matInput type="text" />
-        <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
+    <form (ngSubmit)="submitForm()" [formGroup]="searchForm">
+        <mat-form-field class="search-container">
+            <mat-label>Search by keyword, artist, or reference</mat-label>
+            <input matInput type="text" formControlName="query"/>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+    </form>
 
     <ngx-masonry>
         <div ngxMasonryItem class="masonry-item" *ngFor="let item of items">

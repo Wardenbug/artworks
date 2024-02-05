@@ -1,14 +1,16 @@
-<mat-card class="mat-card card">
-    <div class="img-container">
-        <img mat-card-image :src="https://www.artic.edu/iiif/2/{{item.image_id}}/full/843,/0/default.jpg"
-            :alt="{{item.title}}">
-    </div>
-    <mat-card-header>
-        <mat-card-title>{{item.title}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-card-subtitle>
-            {{item.artist_title}}
-        </mat-card-subtitle>
-    </mat-card-content>
-</mat-card>
+<a [routerLink]="['artwork', item.id]">
+    <mat-card class="mat-card card">
+        <div class="img-container">
+            <img mat-card-image :src="https://www.artic.edu/iiif/2/{{item.image_id}}/full/843,/0/default.jpg"
+                :alt="{{item.title}}">
+        </div>
+        <mat-card-header>
+            <mat-card-title>{{item.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-card-subtitle>
+                {{item.artist_title}}
+            </mat-card-subtitle>
+        </mat-card-content>
+    </mat-card>
+</a>
