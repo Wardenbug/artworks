@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="header">
+        <div class="image-container">
+            <img src="https://www.artic.edu/iiif/2/{{item.image_id}}/full/843,/0/default.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="heading">
+        <div class="text-container">
+            <h1 class="title">
+                {{item.title}}
+            </h1>
+
+            <h2>{{item.artist_display}}</h2>
+            <p> {{item.date_display}}</p>
+            <p>{{item.on_loan_display}}</p>
+            <p [innerHtml]="item.description"></p>
+
+        </div>
+    </div>
+</div>

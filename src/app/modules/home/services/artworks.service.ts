@@ -23,12 +23,8 @@ export class ArtworksService {
     return this.http.get(`${this.baseUrl}/artworks/search`, {
       params: {
         ...params,
-        fields: 'image_id,title,artist_title',
+        fields: 'id,image_id,title,artist_title',
       },
     });
-  }
-
-  public getArtworkById(id: string) {
-    return this.http.get(`${this.baseUrl}/artworks/${id}`);
   }
 }
