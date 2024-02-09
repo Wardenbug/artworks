@@ -1,10 +1,8 @@
-.container{
-    max-width: 1200px;
-    margin: 0 auto;
+.masonry-item {
+  max-width: 300px;
 }
-.masonry-item { max-width: 300px; }
-.search-container{
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
+.search-container {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
 }

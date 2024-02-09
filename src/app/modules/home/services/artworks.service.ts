@@ -9,12 +9,13 @@ import { ArtworksParameters } from '../interfaces/artworks-parameters';
 export class ArtworksService {
   private readonly baseUrl: string = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   public getArtworks(params?: ArtworksParameters) {
     const httpParams = new HttpParams()
       .set('page', params?.page || 1)
-      .set('limit', params?.limit || 16);
+      .set('limit', params?.limit || 16)
+      .set('fields', 'id,image_id,title,artist_title');
 
     return this.http.get(`${this.baseUrl}/artworks`, { params: httpParams });
   }

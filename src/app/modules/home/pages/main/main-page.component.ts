@@ -2,22 +2,16 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ArtworksService } from '../../services/artworks.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Pagination } from '../../interfaces/pagination';
+import { ArtworkItem } from '../../interfaces/artwork-item';
 
-interface Pagination {
-  current_page: number;
-  limit: number;
-  next_url: string;
-  offset: number;
-  total: number;
-  total_pages: number;
-}
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-  public items: any[] = [];
+  public items: ArtworkItem[] = [];
 
   public searchForm = new FormGroup({
     query: new FormControl<string>(''),
@@ -29,14 +23,13 @@ export class MainPageComponent implements OnInit {
   public pagination: Pagination | null = null;
 
   constructor(
-    private artworkService: ArtworksService,
-    private route: ActivatedRoute,
-    private router: Router
+    private readonly artworkService: ArtworksService,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: any) => {
-      console.log(params.q, params.page);
       if (!params.q && params.page) {
         this.artworkService
           .getArtworks({ page: params.page })
@@ -47,7 +40,7 @@ export class MainPageComponent implements OnInit {
           });
       } else {
         this.artworkService
-          .getArtworksBySearch({ q: params.q, page: params.page })
+          .getArtworksBySearch({ q: params.q || '', page: params.page || 1 })
           .subscribe((el: any) => {
             this.pagination = el.pagination;
             this.items = el.data;
@@ -59,7 +52,7 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  submitForm() {
+  public submitForm(): void {
     this.artworkService
       .getArtworksBySearch({ q: this.searchForm.value.query })
       .subscribe((el: any) => {
@@ -71,7 +64,7 @@ export class MainPageComponent implements OnInit {
       });
   }
 
-  private updateQueryParams() {
+  private updateQueryParams(): void {
     const queryParams = { page: this.page, q: this.query };
 
     const mergedQueryParams = {
@@ -85,7 +78,7 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  public changePage(page: number) {
+  public changePage(page: number): void {
     this.artworkService
       .getArtworks({
         page: page,
