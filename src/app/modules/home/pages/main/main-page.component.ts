@@ -33,7 +33,7 @@ export class MainPageComponent implements OnInit {
       if (!params.q && params.page) {
         this.artworkService
           .getArtworks({ page: params.page })
-          .subscribe((el: any) => {
+          .subscribe((el) => {
             this.pagination = el.pagination;
             this.items = el.data;
             this.page = params.page;
@@ -84,7 +84,7 @@ export class MainPageComponent implements OnInit {
         page: page,
         limit: this.pagination?.limit,
       })
-      .subscribe((el: any) => {
+      .subscribe((el) => {
         this.pagination = el.pagination;
         this.items = el.data;
         this.page = page;
